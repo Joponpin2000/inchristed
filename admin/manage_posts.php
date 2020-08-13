@@ -157,12 +157,6 @@ unset($pdo);
                             <a href="posts.php" class="active">Posts</a>
                         </li>
                         <li>
-                            <a href="contact_us.php">Contact</a>
-                        </li>
-                        <li>
-                            <a href="about.php">About</a>
-                        </li>
-                        <li>
                             <a href="settings.php">Account Settings</a>
                         </li>
                         <li>
@@ -219,15 +213,7 @@ unset($pdo);
                             </div>
                         </div>
                     </div>
-                    <div class="copyrights">
-                    <div class="container">
-                        <div class="row">
-                            <div style="text-align: center; width: 100%;">
-                                <p>All Rights Reserved. &copy; 2020 <b><a href="../">Inchristed</a></b></p>
-                            </div>
-                        </div>
-                    </div><!-- end container -->
-                </div><!-- end copyrights -->
+                    
 
                 </div>
             </div>

@@ -52,12 +52,6 @@ if(!isset($_SESSION['loggedin']) && ($_SESSION['loggedin'] !== true))
                             <a href="posts.php">Posts</a>
                         </li>
                         <li>
-                            <a href="contact_us.php">Contact</a>
-                        </li>
-                        <li>
-                            <a href="about.php">About</a>
-                        </li>
-                        <li>
                             <a href="settings.php">Account Settings</a>
                         </li>
                         <li>
@@ -98,26 +92,6 @@ if(!isset($_SESSION['loggedin']) && ($_SESSION['loggedin'] !== true))
                                 </a>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-4">
-                                <a href="contact_us.php">
-                                    <div class="service-card btn" style="background: inherit;">
-                                    <div class="caption">
-                                        <h4>Contacts</h4>
-                                        <p>Manage Contacts</p>
-                                    </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-4">
-                                <a href="about.php">
-                                    <div class="service-card btn" style="background: inherit;">
-                                    <div class="caption">
-                                        <h4>About</h4>
-                                        <p>Manage About</p>
-                                    </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-md-4 col-lg-4">
                                 <a href="settings.php">
                                     <div class="service-card btn" style="background: inherit;">
                                     <div class="caption">
@@ -130,15 +104,7 @@ if(!isset($_SESSION['loggedin']) && ($_SESSION['loggedin'] !== true))
                         </div>
                     </div>
 
-                    <div class="copyrights">
-                        <div class="container">
-                            <div class="row">
-                            <div style="text-align: center; width: 100%;">
-                                <p>All Rights Reserved. &copy; 2020 <b><a href="../">Inchristed</a></b></p>
-                            </div>
-                            </div>
-                        </div><!-- end container -->
-                    </div><!-- end copyrights -->
+                    
                 </div>
                 
             </div>

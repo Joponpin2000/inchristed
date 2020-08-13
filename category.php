@@ -19,7 +19,7 @@ if(isset($_GET['title']))
     {
       $page = 1;
     }
-    $limit = 1;
+    $limit = 6;
     $start_from = ($page-1) * $limit;
 
     $query = "SELECT * FROM posts WHERE category_id = :category_id LIMIT $start_from, $limit";
@@ -128,10 +128,21 @@ else
                           </a>
                           <div class="excerpt">
                               <span class="post-category text-white bg-warning mb-3"><?php echo $blog[0]['name']; ?></span>
-                              <h2><a href="single.php?title=<?php echo $post['slug']?>"><?php echo $post['title']; ?></a></h2>
+                              <h2><a href="single.php?title=<?php echo $post['slug']?>">
+                              <?php
+                                      $title_limit = 22;
+                                      if (strlen($post['title']) <= $title_limit)
+                                      {
+                                          echo $post['title'];
+                                      }
+                                      else
+                                      {
+                                          echo substr_replace($post['title'], "..", $title_limit);
+                                      }
+                              ?></a></h2>
                           <div class="post-meta align-items-center text-left clearfix">
                               <figure class="author-figure mb-0 mr-3 float-left"><img src="images/person_1.jpg" alt="Image" class="img-fluid"></figure>
-                              <span class="d-inline-block mt-1">By <a href="#">Author</a></span>
+                              <span class="d-inline-block mt-1">By <a href="about.php#author"> Felix Alalade</a></span>
                               <span>&nbsp;-&nbsp; <?php echo date("F j, Y ", strtotime($post['created_at'])); ?></span>
                           </div>
                           <p>

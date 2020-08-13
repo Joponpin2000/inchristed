@@ -28,22 +28,22 @@ if (isset($_GET['type']) && trim($_GET['type']) != '')
     }
 }
 
-$limit = 5;
+    $limit = 5;
 
-if (isset($_GET['page']))
-{
-  $page = trim($_GET['page']);
-}
-else
-{
-  $page = 1;
-}
+    if (isset($_GET['page']))
+    {
+    $page = trim($_GET['page']);
+    }
+    else
+    {
+    $page = 1;
+    }
 
-$start_from = ($page-1) * $limit;
+    $start_from = ($page-1) * $limit;
 
-$sql = "SELECT * FROM topics ORDER BY id DESC LIMIT $start_from, $limit";
-$result = $db_connect->Read($sql);
-?>
+    $sql = "SELECT * FROM topics ORDER BY id DESC LIMIT $start_from, $limit";
+    $result = $db_connect->Read($sql);
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -156,23 +156,14 @@ $result = $db_connect->Read($sql);
                 for ($i = 1; $i <= $total_pages; $i++)
                 {
                     if ($i == $page)
-                    $pagLink .= "<a class='btn view-btn1' style='margin-right:20px; background-color: grey; color: red;' href='posts.php?page=" . $i . "'>" . $i . "  </a>";
+                    $pagLink .= "<a class='btn view-btn1' style='margin-right:20px;' href='posts.php?page=" . $i . "'>" . $i . "  </a>";
                     else
                     {                            
-                        $pagLink .= "<a class='btn view-btn1' style='margin-right:20px' href='posts.php?page=" . $i . "'>" . $i . "  </a>";
+                        $pagLink .= "<a class='btn btn-primary view-btn1' style='margin-right:20px' href='posts.php?page=" . $i . "'>" . $i . "  </a>";
                     }
                 }
                 echo $pagLink;
             ?>
-            <div class="copyrights">
-                <div class="container">
-                    <div class="row">
-                    <div style="text-align: center; width: 100%;">
-                        <p>All Rights Reserved. &copy; 2020 <b><a href="../">Inchristed</a></b></p>
-                    </div>
-                    </div>
-                </div><!-- end container -->
-            </div><!-- end copyrights -->
         </div>
         
     </div>

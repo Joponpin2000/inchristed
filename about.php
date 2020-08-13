@@ -63,7 +63,6 @@
           <div class="col-md-12 col-lg-10">
             <div class="post-entry text-center">
               <h1 class="">About Us</h1>
-              <p class="lead mb-4 text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, adipisci?</p>
             </div>
           </div>
         </div>
@@ -78,9 +77,9 @@
             <img src="images/img_1.jpg" alt="Image" class="img-fluid">
           </div>
           <div class="col-md-5 mr-auto order-md-1">
-            <h2>We Love To Explore</h2>
+            <h2>What we do</h2>
             <p style="color: black; font-family:Arial, Helvetica, sans-serif">
-              Here at InChristed, our goal is to make you a lifelong testifier of the realities in Chris Jesus.
+              Here at InChristed, our goal is to make you a lifelong testifier of the realities in Christ Jesus.
               We believe that when believers lay hold of their identity in Christ, 
               they will be able to exercise their rights and authority so as to reign as kings on this earth.
             </p>
@@ -101,7 +100,7 @@
       </div>
     </div>
 
-    <div class="site-section">
+    <div class="site-section" id="author">
       <div class="container">
         <div class="row mb-5 justify-content-center">
           <div class="text-center">
@@ -110,7 +109,7 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-md-6 col-lg-4 mb-5 text-center">
-            <img src="images/person_2.jpg" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
+            <img src="images/portrait.JPG" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
           </div>
           <div class="col-md-6 col-lg-6 mb-5 text-center">
             <h2 class="mb-3 h4">Felix Alalade</h2>

@@ -1,4 +1,35 @@
- <!DOCTYPE html>
+<?php
+// Email Submit
+if ( isset($_POST['email']) && isset($_POST['name']) && isset($_POST['subject']) && isset($_POST['message']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) )
+{
+
+  // detect & prevent header injections
+  $test = "/(content-type|bcc:|cc:|to:)/i";
+  foreach ( $_POST as $key => $val )
+  {
+    if ( preg_match( $test, $val ) )
+    {
+        header("location: index.php");
+        exit;
+    }
+  }
+    $headers = 'From: ' . $_POST["name"] . '<' . $_POST["email"] . '>' . "\r\n" .
+    'Reply-To: ' . $_POST["email"] . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+
+    if(mail( "idowuayanfeoluwa@gmail.com", $_POST['subject'], $_POST['message'], $headers ))
+    {
+      echo "<script>alert('Mail has been sent!\nThanks for contacting us.')</script>";
+    }
+    else
+    {
+      echo "<script>alert('Oops! An error occured.')</script>";
+      header("location: ./");
+    }
+}
+?>
+
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <title>Inchristed.com</title>
@@ -62,7 +93,7 @@
           <div class="col-md-12 col-lg-10">
             <div class="post-entry text-center">
               <h1 class="">Contact Us</h1>
-              <p class="lead mb-4 text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, adipisci?</p>
+              <p class="lead mb-4 text-white">We'll love to hear from you</p>
             </div>
           </div>
         </div>
@@ -77,9 +108,9 @@
 
             
 
-            <form action="validate_contact.php" method="POST" role="form" class="p-5 bg-white">
+            <form action="" method="POST" role="form" class="p-5 bg-white">
               <div class="row form-group">
-                <div class="col-md-6 mb-3 mb-md-0">
+                <div class="col-md-12 mb-3 mb-md-0">
                   <label class="text-black" for="name">Your Name</label>
                   <input class="form-control" name="name" type="text" required>
                 </div>

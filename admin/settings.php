@@ -56,12 +56,6 @@ $result = $db_connect->Read($sql, ['id' => $_SESSION['id']]);
                     <a href="posts.php">Posts</a>
                 </li>
                 <li>
-                    <a href="contact_us.php">Contact</a>
-                </li>
-                <li>
-                    <a href="about.php">About</a>
-                </li>
-                <li>
                     <a href="settings.php" class="active">Account Settings</a>
                 </li>
                 <li>

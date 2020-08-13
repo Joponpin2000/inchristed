@@ -28,8 +28,22 @@ if (isset($_GET['type']) && trim($_GET['type']) != '')
     }
 }
 
+
+$limit = 4;
+
+if (isset($_GET['page']))
+{
+$page = trim($_GET['page']);
+}
+else
+{
+$page = 1;
+}
+
+$start_from = ($page-1) * $limit;
+
 // Populate data from database
-$sql = "SELECT posts.*, topics.name FROM posts, topics WHERE posts.category_id=topics.id ORDER BY posts.id DESC";
+$sql = "SELECT posts.*, topics.name FROM posts, topics WHERE posts.category_id=topics.id ORDER BY posts.id DESC LIMIT $start_from, $limit";
 $result = $db_connect->Read($sql);
 ?>
 
@@ -74,12 +88,6 @@ $result = $db_connect->Read($sql);
                             <a href="posts.php" class="active">Posts</a>
                         </li>
                         <li>
-                            <a href="contact_us.php">Contact</a>
-                        </li>
-                        <li>
-                            <a href="about.php">About</a>
-                        </li>
-                        <li>
                             <a href="settings.php">Account Settings</a>
                         </li>
                         <li>
@@ -101,10 +109,8 @@ $result = $db_connect->Read($sql);
                         <table style="width: 100%" class="table table-bordered table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>ID</th>
-                                    <th>Category</th>
                                     <th>Post Title</th>
+                                    <th>Category</th>
                                     <th>Body</th>
                                     <th>Image</th>
                                     <th></th>
@@ -121,10 +127,8 @@ $result = $db_connect->Read($sql);
                                             {
                                         ?>
                                                 <tr>
-                                                    <td><?php echo $i ?></td>
-                                                    <td><?php echo $row['id'] ?></td>
-                                                    <td><?php echo $row['name'] ?></td>
                                                     <td><?php echo $row['title'] ?></td>
+                                                    <td><?php echo $row['name'] ?></td>
                                                     <td><?php echo substr_replace($row['body'], "...", 100); ?></td>
                                                     <td><img src="<?php echo "../images/" . $row['image']?>" style="width: 40px; height: 30px"/></td>
                                                     <td style="text-align: right;">
@@ -145,15 +149,26 @@ $result = $db_connect->Read($sql);
                             ?>
                         </table>
                     </div>
-                    <div class="copyrights">
-                        <div class="container">
-                            <div class="row">
-                            <div style="text-align: center; width: 100%;">
-                                <p>All Rights Reserved. &copy; 2020 <b><a href="../">Inchristed</a></b></p>
-                            </div>
-                            </div>
-                        </div><!-- end container -->
-                    </div><!-- end copyrights -->
+
+                            
+                    <?php
+                        $result_db = "SELECT COUNT(id) FROM posts";
+                        $row_db = $db_connect->Read($result_db);
+                        $total_records = $row_db[0]['COUNT(id)'];
+                        $total_pages = ceil($total_records / $limit);
+                        $pagLink = "";
+                        for ($i = 1; $i <= $total_pages; $i++)
+                        {
+                            if ($i == $page)
+                            $pagLink .= "<a class='btn view-btn1' style='margin-right:20px;' href='posts.php?page=" . $i . "'>" . $i . "  </a>";
+                            else
+                            {                            
+                                $pagLink .= "<a class='btn view-btn1 btn-primary' style='margin-right:20px' href='posts.php?page=" . $i . "'>" . $i . "  </a>";
+                            }
+                        }
+                        echo $pagLink;
+                    ?>
+                    
                 </div>
                 
             </div>

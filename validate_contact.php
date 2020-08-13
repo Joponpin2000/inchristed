@@ -17,9 +17,14 @@ if ( isset($_POST['email']) && isset($_POST['name']) && isset($_POST['subject'])
     'Reply-To: ' . $_POST["email"] . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
-  mail( "idowuayanfeoluwa@gmail.com", $_POST['subject'], $_POST['message'], $headers );
+    if(mail( "idowuayanfeoluwa@gmail.com", $_POST['subject'], $_POST['message'], $headers ))
+    {
+      echo "<script>alert('Mail has been sent!\nThanks for contacting us. ')</script>";
+    }
+    else
+    {
+      header("location: ./");
+    }
 }
-
-header("location: index.php");
 
 ?>

@@ -31,7 +31,7 @@ if(isset($_GET['title']))
       $ano_sql = "SELECT COUNT(*) FROM reply WHERE post_id = :post_id";
       $num_comment = $database->Read($ano_sql, ["post_id" => $blog[0]['id']]);
 
-      $statement = "SELECT * FROM topics ORDER BY id DESC LIMIT 0, 6";
+      $statement = "SELECT * FROM topics LIMIT 0, 6";
       $categories = $database->Read($statement);
   }
   else
@@ -111,7 +111,7 @@ else
               <span class="post-category text-white bg-success mb-3"><?php echo $blog[0]['category_name']; ?></span>
               <h1 class="mb-4"><?php echo $blog[0]['title']; ?></h1>
               <div class="post-meta align-items-center text-center">
-                <figure class="author-figure mb-0 mr-3 d-inline-block"><img src="images/person_1.jpg" alt="Image" class="img-fluid"></figure>
+                <figure class="author-figure mb-0 mr-3 d-inline-block"><img src="images/portrait.jpg" alt="Image" class="img-fluid"></figure>
                 <span class="d-inline-block mt-1">By author</span>
                 <span>&nbsp;-&nbsp; <?php echo date("F j, Y ", strtotime($blog[0]['created_at'])); ?></span>
               </div>
@@ -140,7 +140,18 @@ else
 
 
             <div class="pt-5">
-              <h3 class="mb-5"><?php echo $num_comment[0]['COUNT(*)']; ?> Comments</h3>
+              <h4 class="mb-5">
+                <?php
+                  echo $num_comment[0]['COUNT(*)'];
+                  if ($num_comment[0]['COUNT(*)'] == 1)
+                  {
+                    echo " comment";
+                  }
+                  else
+                  {
+                    echo " comments";
+                  }
+                ?></h4>
               <ul class="comment-list">
                 <?php
                   foreach ($result as $reply)
@@ -148,7 +159,7 @@ else
                 ?>
                 <li class="comment">
                   <div class="vcard">
-                    <img src="images/person_1.jpg" alt="Image placeholder">
+                    <img src="images/placeholder.png" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
                     <h3><?php echo $reply['name']; ?></h3>
@@ -208,11 +219,12 @@ else
             <!-- END sidebar-box -->
             <div class="sidebar-box">
               <div class="bio text-center">
-                <img src="images/person_1.jpg" alt="Image Placeholder" class="img-fluid mb-5">
+                <img src="images/portrait.jpg" alt="Image Placeholder" class="img-fluid mb-5">
                 <div class="bio-body">
                   <h2>Felix Alalade</h2>
                   <p class="mb-4" style="color: rgb(22, 24, 27);">I am a kingdom scribe; a privileged heir of the kingdom, like you are. I just might not look like you except that we all look the same in Christ.<br/>
-                If you are worn out on religion and really want something definitive and disruptive, then let's be friends.</p>
+                    If you are worn out on religion and really want something definitive and disruptive, then let's be friends.
+                  </p>
                   <!--
                     <p><a href="#" class="btn btn-primary btn-sm rounded px-4 py-2">Read my bio</a></p>
                   -->
@@ -262,7 +274,7 @@ else
                   $query = "SELECT COUNT(*) FROM posts WHERE category_id=:category_id";
                   $count = $database->Read($query, ["category_id" => $category['id']]);
             ?>
-                  <li><a href="category.php?title=<?php echo $category['slug']?>"><?php echo $category['name']?> <span><?php echo $count[0]['COUNT(*)']; ?></span></a></li>
+                  <li><a href="category.php?title=<?php echo $category['slug']?>" style="color: inherit;"><?php echo $category['name']?> <span><?php echo $count[0]['COUNT(*)']; ?></span></a></li>
               <?php
                 }
               ?>

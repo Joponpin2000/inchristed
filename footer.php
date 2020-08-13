@@ -1,3 +1,13 @@
+<?php
+
+require_once("functions/DatabaseClass.php");
+
+$database = new DatabaseClass();
+
+$sql = "SELECT * FROM topics ORDER BY id DESC LIMIT 0, 6";
+$tags = $database->Read($sql);
+
+?>
 <div class="site-footer">
     <div class="container">
       <div class="row mb-5">
@@ -19,23 +29,28 @@
         </div>
         <div class="col-md-3">
           <h3 class="footer-heading mb-4">Recent Tags</h3>
-          <ul class="list-unstyled float-left">
-            <li><a href="#" style="color: white;">Travel</a></li>
-            <li><a href="#" style="color: white;">Lifestyle</a></li>
-            <li><a href="#" style="color: white;">Sports</a></li>
-            <li><a href="#" style="color: white;">Nature</a></li>
-          </ul>
+          <?php
+            if ($tags)
+            {
+              foreach ($tags as $tag)
+              {
+          ?>
+                <a href="category.php?title=<?php echo $tag['slug']?>" class="btn btn-success" style="color: white; margin: 5px; border-radius: 10px;"><?php echo $tag['name']; ?></a>
+          <?php
+              }
+            }
+          ?>
         </div>
         <div class="col-md-2">
           <div>
             <h3 class="footer-heading mb-4">Social Links</h3>
             <p>  
-            <ul class="list-unstyled float-left">
-              <li><a href="https://twitter.com/FelixAlalade" style="color: white;"><span class="icon-twitter p-2"></span></a></li>
-              <li><a href="https://instagram.com/felixinchristed" style="color: white;"><span class="icon-instagram p-2"></span></a></li>
-              <li><a href="https://facebook.com/phelixzehope" style="color: white;"><span class="icon-facebook p-2"></span></a></li>
-              <li><a href="tel:0803 4108 859" style="color: white;"><span class="icon-phone p-2"></span></a></li>
-            </ul>
+              <ul class="list-unstyled float-left">
+                <a href="https://twitter.com/FelixAlalade" style="color: white;"><span class="icon-twitter p-2"></span></a>
+                <li><a href="https://instagram.com/felixinchristed" style="color: white;"><span class="icon-instagram p-2"></span></a></li>
+                <li><a href="https://facebook.com/phelixzehope" style="color: white;"><span class="icon-facebook p-2"></span></a></li>
+                <li><a href="tel:0803 4108 859" style="color: white;"><span class="icon-phone p-2"></span></a></li>
+              </ul>
             </p>
           </div>
         </div>
