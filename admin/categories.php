@@ -85,12 +85,6 @@ if (isset($_GET['type']) && trim($_GET['type']) != '')
                     <a href="posts.php">Posts</a>
                 </li>
                 <li>
-                    <a href="contact_us.php">Contact</a>
-                </li>
-                <li>
-                    <a href="about.php">About</a>
-                </li>
-                <li>
                     <a href="settings.php">Account Settings</a>
                 </li>
                 <li>
@@ -128,7 +122,12 @@ if (isset($_GET['type']) && trim($_GET['type']) != '')
                                 ?>
                                         <tr>
                                             <td><?php echo $row['name'] ?></td>
-                                            <td><?php echo $row['description'] ?></td>
+                                            <td  style="word-break: break-all;">
+                                                <?php
+                                                    $sub = substr_replace($row['description'], "...", 30);
+                                                     echo $sub; 
+                                                ?>
+                                            </td>
                                             <td style="text-align: right;">
                                                 <?php
                                                 echo "<span class='sett edit'><a href='manage_categories.php?id=" . $row['id'] .  "'>Edit</a></span>";

@@ -185,6 +185,12 @@ ul ul a {
 /*================================================
             DASHBOARD                             
 ================================================*/
+.card {
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.212);
+    margin: 30px;
+}
+
+
 .service-card {
     border-radius: 20px;
     box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.212);

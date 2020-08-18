@@ -37,7 +37,9 @@
         <div class="row align-items-center">
           
           <div class="col-4 site-logo">
-            <a href="index.html" class="text-black h2 mb-0">Inchris<span class="lead icon-cross" style="color: red;">+</span>ed</a>
+            <a href="index.php" class="text-black h2 mb-0">
+              <img src="images/logo-1.jpg">
+            </a>
           </div>
 
           <div class="col-8 text-right">
@@ -57,7 +59,7 @@
     </header>
     
     
-    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('images/img_4.jpg');">
+    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('images/banner-15.jpg');">
       <div class="container">
         <div class="row same-height justify-content-center">
           <div class="col-md-12 col-lg-10">
@@ -74,7 +76,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 order-md-2">
-            <img src="images/img_1.jpg" alt="Image" class="img-fluid">
+            <img src="images/banner-3.jpg" alt="Image" class="img-fluid">
           </div>
           <div class="col-md-5 mr-auto order-md-1">
             <h2>What we do</h2>

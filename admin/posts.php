@@ -129,9 +129,12 @@ $result = $db_connect->Read($sql);
                                                 <tr>
                                                     <td><?php echo $row['title'] ?></td>
                                                     <td><?php echo $row['name'] ?></td>
-                                                    <td><?php echo substr_replace($row['body'], "...", 100); ?></td>
+                                                    <td style="word-break: break-all;"><?php
+                                                    $sub = substr_replace($row['body'], "...", 5);
+                                                     echo $sub; 
+                                                     ?></td>
                                                     <td><img src="<?php echo "../images/" . $row['image']?>" style="width: 40px; height: 30px"/></td>
-                                                    <td style="text-align: right;">
+                                                    <td>
                                                         <?php
                                                         echo "<span class='sett edit'><a href='manage_posts.php?id=" . $row['id'] .  "'>Edit</a></span>";
 
@@ -160,7 +163,7 @@ $result = $db_connect->Read($sql);
                         for ($i = 1; $i <= $total_pages; $i++)
                         {
                             if ($i == $page)
-                            $pagLink .= "<a class='btn view-btn1' style='margin-right:20px;' href='posts.php?page=" . $i . "'>" . $i . "  </a>";
+                            $pagLink .= "<a class='btn view-btn1' style='margin-right:20px; background-color: grey; color: black;' href='posts.php?page=" . $i . "'>" . $i . "  </a>";
                             else
                             {                            
                                 $pagLink .= "<a class='btn view-btn1 btn-primary' style='margin-right:20px' href='posts.php?page=" . $i . "'>" . $i . "  </a>";

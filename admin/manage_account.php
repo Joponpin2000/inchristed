@@ -173,7 +173,7 @@ unset($pdo);
                                     <input type="password" name="password" class="form-control" value="<?php echo $password ?>" required/>
                                     <span class="help-block" style="color:red;"><?php echo $password_err; ?></span>
                                 </div>
-                                <button type="submit" name="submit" class="btn btn-warning btn-block">Submit</button>
+                                <button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
                             </form>
                             </div>
                         </div>

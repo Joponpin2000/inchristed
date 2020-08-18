@@ -85,7 +85,8 @@ else
       <div class="container-fluid">
         <div class="row align-items-center">          
           <div class="col-4 site-logo">
-            <a href="index.php" class="text-black h2 mb-0">Inchris<span class="lead icon-cross" style="color: red;">+</span>ed</a>
+            <a href="index.php" class="text-black h2 mb-0">
+                <img src="images/logo-1.jpg"></a>
           </div>
 
           <div class="col-8 text-right">
@@ -130,7 +131,9 @@ else
             
             <div class="post-content-body">
               <h1><?php echo $blog[0]['title']; ?></h1>
-              <?php echo $blog[0]['body']; ?>
+              <div class="entry-content" style="word-break: break-all;">
+                  <?php echo $blog[0]['body']; ?>
+              </div>
             </div>
 
             
@@ -225,9 +228,7 @@ else
                   <p class="mb-4" style="color: rgb(22, 24, 27);">I am a kingdom scribe; a privileged heir of the kingdom, like you are. I just might not look like you except that we all look the same in Christ.<br/>
                     If you are worn out on religion and really want something definitive and disruptive, then let's be friends.
                   </p>
-                  <!--
-                    <p><a href="#" class="btn btn-primary btn-sm rounded px-4 py-2">Read my bio</a></p>
-                  -->
+                    <p><a href="about.php#author" class="btn btn-primary btn-sm rounded px-4 py-2">Read my bio</a></p>
                   <p class="social">
                     <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
                     <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>

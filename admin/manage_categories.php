@@ -3,6 +3,7 @@ session_start();
 
 // include function file
 require_once('../functions/DatabaseClass.php');
+require_once('../functions/functions.php');
 
 
 $db_connect = new DatabaseClass();
@@ -65,7 +66,7 @@ if(isset($_POST['submit']))
         else
         {            
             // Execute an insert statement
-            $sql = "INSERT INTO topics (name, description slug) VALUES (:name, :description :slug)";
+            $sql = "INSERT INTO topics (name, description, slug) VALUES (:name, :description, :slug)";
             $stmt = $db_connect->Insert($sql, ['name' => $name, 'description' => $description, 'slug' => $slug]);
 
             // Close statement
@@ -151,7 +152,7 @@ unset($pdo);
                                     <label for="description" class="form-control-label">Description</label>
                                     <input type="text" name="description" class="form-control" value="<?php echo $description ?>" placeholder="Enter category description" required/>
                                 </div>
-                                <button type="submit" name="submit" class="btn btn-warning btn-block">Submit</button>
+                                <button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
                             </form>
                             </div>
                         </div>

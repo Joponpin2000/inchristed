@@ -82,7 +82,8 @@ else
         <div class="row align-items-center">
           
           <div class="col-4 site-logo">
-            <a href="index.php" class="text-black h2 mb-0">Inchris<span class="lead icon-cross" style="color: red;">+</span>ed</a>
+            <a href="index.php" class="text-black h2 mb-0">
+                <img src="images/logo-1.jpg"></a>
           </div>
 
           <div class="col-8 text-right">
@@ -101,19 +102,21 @@ else
       </div>
     </header>
     
-    
-    <div class="py-5 bg-light">
+
+    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('images/banner-2.jpg'); background-position: center;">
       <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <span>Category</span>
-            <h3><?php echo $blog[0]['name']; ?></h3>
-            <p><?php echo $blog[0]['description']; ?></p>
+        <div class="row same-height justify-content-center">
+          <div class="col-md-12 col-lg-10">
+            <div class="post-entry text-center">
+            <span class="lead mb-4 text-white">Category</span>
+            <h1><?php echo $blog[0]['name']; ?></h1>
+            <p class="lead mb-4 text-white"><?php echo $blog[0]['description']; ?></p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
+    
     <div class="site-section bg-white">
       <div class="container">
         <div class="row">
@@ -141,24 +144,26 @@ else
                                       }
                               ?></a></h2>
                           <div class="post-meta align-items-center text-left clearfix">
-                              <figure class="author-figure mb-0 mr-3 float-left"><img src="images/person_1.jpg" alt="Image" class="img-fluid"></figure>
+                              <figure class="author-figure mb-0 mr-3 float-left"><img src="images/portrait.jpg" alt="Image" class="img-fluid"></figure>
                               <span class="d-inline-block mt-1">By <a href="about.php#author"> Felix Alalade</a></span>
                               <span>&nbsp;-&nbsp; <?php echo date("F j, Y ", strtotime($post['created_at'])); ?></span>
                           </div>
                           <p>
-                            <?php
-                                $body_limit = 70;
-                                if (strlen($post['body']) <= $body_limit)
-                                {
-                                    echo $post['body'];
-                                }
-                                else
-                                {
-                                    echo substr_replace($post['body'], "..", $body_limit);
-                                }
-                            ?>
+                            <div class="entry-content" style="word-break: break-all;">
+                              <?php
+                                  $body_limit = 70;
+                                  if (strlen($post['body']) <= $body_limit)
+                                  {
+                                      echo $post['body'];
+                                  }
+                                  else
+                                  {
+                                      echo substr_replace($post['body'], "..", $body_limit);
+                                  }
+                              ?>
+                            </div>
                           </p>
-                              <p><a href="single.php?title=<?php echo $post['slug']?>">Read More</a></p>
+                              <p><a class="btn btn-primary" href="single.php?title=<?php echo $post['slug']?>">Read More</a></p>
                           </div>
                         </div>
                     </div>

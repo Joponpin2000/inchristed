@@ -98,7 +98,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                                         <input type="password" class="form-control" name="password" value="<?php echo $password; ?>" required/>
                                         <span class="help-block"><?php echo $password_err; ?></span>
                                     </div>
-                                    <button type="submit" style="background-color: #7386D5; border-color: #7386D5" class="btn btn-warning btn-block">Submit</button>
+                                    <button type="submit" style="background-color: #7386D5; border-color: #7386D5" class="btn btn-warning btn-block">Login</button>
                                 </form>
                             </div>
                     </div>

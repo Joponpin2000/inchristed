@@ -1236,23 +1236,18 @@ h1, h2, h3, h4, h5,
       outline: none; }
   .search-form-wrap form .form-control {
     border: none; }
+
+/*==========================================================*/
+
+.site-logo img {
+  height: 40px;
+  margin: 5px auto
+}
+
 .m-i-h {
   max-height: 220px;
   max-width: 100%;
 }
-
-
-/* Banner */
-
-.banner {
-  min-height: 500px;
-  max-height: 500px;
-  color: white;
-  background-image: url('../images/banner.jpg');
-  background-size: 100% 100%;
-}
-/*  End Banner   */
-
 
 .blog-card {
   border-radius: 7px;

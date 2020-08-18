@@ -68,7 +68,8 @@ if ( isset($_POST['email']) && isset($_POST['name']) && isset($_POST['subject'])
         <div class="row align-items-center">
           
           <div class="col-4 site-logo">
-            <a href="index.php" class="text-black h2 mb-0">Inchris<span class="lead icon-cross" style="color: red;">+</span>ed</a>
+            <a href="index.php" class="text-black h2 mb-0">
+                <img src="images/logo-1.jpg"></a>
           </div>
 
           <div class="col-8 text-right">
@@ -87,7 +88,7 @@ if ( isset($_POST['email']) && isset($_POST['name']) && isset($_POST['subject'])
     </header>
     
     
-    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('images/img_4.jpg');">
+    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('images/banner-14.jpg');">
       <div class="container">
         <div class="row same-height justify-content-center">
           <div class="col-md-12 col-lg-10">
@@ -149,10 +150,10 @@ if ( isset($_POST['email']) && isset($_POST['name']) && isset($_POST['subject'])
             <div class="p-4 mb-3 bg-white">
 
               <p class="mb-0 font-weight-bold">Phone</p>
-              <p class="mb-4"><a href="tel:0803 4108 859">+234 803 4108 859</a></p>
+              <p class="mb-4"><a style="color: inherit;" href="tel:0803 4108 859">+234 803 4108 859</a></p>
 
               <p class="mb-0 font-weight-bold">Email Address</p>
-              <p class="mb-0"><a href="mailto:felix@inchristed.com">felix@inchristed.com</a></p>
+              <p class="mb-0"><a href="mailto:felix@inchristed.com" style="color: inherit;">felix@inchristed.com</a></p>
 
             </div>
 

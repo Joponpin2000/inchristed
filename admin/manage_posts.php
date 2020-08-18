@@ -3,6 +3,7 @@ session_start();
 
 // include function file
 require_once('../functions/DatabaseClass.php');
+require_once('../functions/functions.php');
 
 
 $db_connect = new DatabaseClass();
@@ -208,7 +209,7 @@ unset($pdo);
                                     <label for="body" class="form-control-label">Body</label>
                                     <textarea name="body" row="10" cols="80" class="form-control" placeholder="Enter post body" required><?php echo $body ?></textarea>
                                 </div>
-                                <button type="submit" name="submit" class="btn btn-warning btn-block">Submit</button>
+                                <button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
                             </form>
                             </div>
                         </div>

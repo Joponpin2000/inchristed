@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+
 require_once("functions/DatabaseClass.php");
 
 $database = new DatabaseClass();
@@ -41,12 +41,13 @@ $database = new DatabaseClass();
     </div>
     
     
-    <div class="banner">
       <header class="site-navbar" role="banner">
         <div class="container-fluid">
           <div class="row align-items-center">
             <div class="col-4 site-logo">
-              <a href="" class="text-black h2 mb-0">Inchris<span class="lead icon-cross" style="color: red;">+</span>ed</a>
+              <a href="" class="text-black h2 mb-0">
+                <img src="images/logo-1.jpg">
+              </a>
             </div>
             <div class="col-8 text-right">
               <nav class="site-navigation" role="navigation">
@@ -60,7 +61,21 @@ $database = new DatabaseClass();
             </div>
         </div>
       </header>
+
+    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('images/banner-2.jpg'); background-position: center;">
+      <div class="container">
+        <div class="row same-height justify-content-center">
+          <div class="col-md-12 col-lg-10">
+            <div class="post-entry text-center">
+              <p class="lead mb-4 text-white">When God takes aim, He doesn't miss. God's hand is upon you. Be assured!</p>
+              <h1 class="">Inchristed</h1>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+      <!--<div class="banner">
+      </div>-->
 
     <div class="site-section">
       <div class="container">
@@ -112,11 +127,12 @@ $database = new DatabaseClass();
                                   }
                           ?></a></h2>
                           <div class="post-meta align-items-center text-left clearfix">
-                              <figure class="author-figure mb-0 mr-3 float-left"><img src="images/person_1.jpg" alt="Image" class="img-fluid"></figure>
+                              <figure class="author-figure mb-0 mr-3 float-left"><img src="images/portrait.jpg" alt="Author" class="img-fluid"></figure>
                               <span class="d-inline-block mt-1">By <a href="about.php#author"> Felix Alalade</a></span>
                               <span>&nbsp;-&nbsp; <?php echo date("F j, Y ", strtotime($post['created_at'])); ?></span>
                           </div>
                           <p style="max-width: 100%; min-width: 100%;">
+                            <div class="entry-content" style="word-break: break-all;">
                               <?php
                                   $body_limit = 70;
                                   if (strlen($post['body']) <= $body_limit)
@@ -128,8 +144,9 @@ $database = new DatabaseClass();
                                       echo substr_replace($post['body'], "..", $body_limit);
                                   }
                               ?>
+                            </div>
                           </p>
-                          <p><a class="btn btn-primary" href="single.php?title=<?php echo $post['slug']?>">Read More</a></p>
+                          <a class="btn btn-primary" href="single.php?title=<?php echo $post['slug']?>">Read More</a>
                         </div>
                       </div>
                     </div>
@@ -141,7 +158,7 @@ $database = new DatabaseClass();
         </div>
         <div class="row text-center pt-5 border-top">
           <div class="col-md-12">
-            <div class="custom-pagination">
+            <div class="custom-pagination" style="margin-bottom: 50px">
               <?php
                 $result_db = "SELECT COUNT(id) FROM posts";
                 $row_db = $database->Read($result_db);

@@ -12,8 +12,9 @@ $tags = $database->Read($sql);
     <div class="container">
       <div class="row mb-5">
         <div class="col-md-4">
-          <h3 class="footer-heading mb-4">About Us</h3>
-          <p style="color: white;">
+          <h3 class="footer-heading mb-4">About Us
+          </h3>
+          <p style="color: white; opacity: 0.7;">
             Here at InChristed, our goal is to make you a lifelong testifier of the realities in Chris Jesus.
              We believe that when believers lay hold of their identity in Christ, 
              they will be able to exercise their rights and authority so as to reign as kings on this earth.
