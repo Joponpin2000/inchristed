@@ -132,6 +132,9 @@ unset($pdo);
                             <a href="posts.php">Posts</a>
                         </li>
                         <li>
+                            <a href="books.php">Books</a>
+                        </li>
+                        <li>
                             <a href="settings.php" class="active">Account Settings</a>
                         </li>
                         <li>

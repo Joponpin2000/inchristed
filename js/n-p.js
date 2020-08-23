@@ -1,6 +1,6 @@
 (function() {
-    var due_date =  new Date('2020-08-27');
-    var days_deadline = 20;
+    var due_date =  new Date('2020-08-30');
+    var days_deadline = 30;
 
     var current_date = new Date();
     var utc1 = Date.UTC(due_date.getFullYear(), due_date.getMonth(), due_date.getDate());

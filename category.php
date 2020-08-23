@@ -90,6 +90,7 @@ else
             <nav class="site-navigation" role="navigation">
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
                 <li><a href="index.php">Home</a></li>
+                <li><a href="books.php">Books</a></li>
                 <li><a href="about.php">About</a></li>
                 <li><a href="contact.php">Contact Us</a></li>
                 

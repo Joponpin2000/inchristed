@@ -24,6 +24,7 @@ $tags = $database->Read($sql);
           <h3 class="footer-heading mb-4">Useful Links</h3>
           <ul class="list-unstyled float-left mr-5">
             <li><a href="index.php" style="color: white;">Home</a></li>
+            <li><a href="books.php" style="color: white;">Books</a></li>
             <li><a href="about.php" style="color: white;">About</a></li>
             <li><a href="contact.php" style="color: white;">Contact Us</a></li>  
           </ul>

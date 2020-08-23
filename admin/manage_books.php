@@ -15,8 +15,7 @@ if(!isset($_SESSION['loggedin']) && ($_SESSION['loggedin'] !== true))
 
 $title = "";
 $image = "";
-$body = "";
-$category = "";
+$details = "";
 
 $msg = "";
 $image_required = 'required';
@@ -27,19 +26,18 @@ if (isset($_GET['id']) && (trim($_GET['id']) != ''))
     $id = trim($_GET['id']);
 
     // Populate data from database
-    $sql = "SELECT * FROM posts WHERE id = :id ";
+    $sql = "SELECT * FROM books WHERE id = :id ";
     $stmt = $db_connect->Read($sql, ["id" => $id]);
 
     if ($stmt)
     {
-        $category = $stmt[0]['category_id'];
         $title = $stmt[0]['title'];    
         $image = $stmt[0]['image'];    
-        $body = $stmt[0]['body'];    
+        $details = $stmt[0]['details'];    
     }
     else
     {
-        header("location: posts.php");
+        header("location: books.php");
         die();            
     }
 
@@ -51,17 +49,11 @@ if (isset($_GET['id']) && (trim($_GET['id']) != ''))
 if(isset($_POST['submit']))
 {
     $title = trim($_POST['title']);
-    $slug = slug($title);
-    $body = trim($_POST['body']);
-    $category = trim($_POST['category_id']);
+    $details = trim($_POST['details']);
 
     if ($_FILES['image']['type'] != '' && $_FILES['image']['type'] != 'image/png' && $_FILES['image']['type'] != 'image/jpg' && $_FILES['image']['type'] != 'image/jpeg')
     {
         $msg = "Please select only png, jpg and jpeg formats.";
-    }
-    if (empty($slug))
-    {
-        $msg = "Please provide a better post title";
     }
 
     if ($msg == "")
@@ -73,11 +65,11 @@ if(isset($_POST['submit']))
             if ($_FILES['image']['name'] != '')
             {
                 $image = rand(111111111, 999999999) . '_' . $_FILES['image']['name'];
-                move_uploaded_file($_FILES['image']['tmp_name'], "../images/" . $image);
+                move_uploaded_file($_FILES['image']['tmp_name'], "../books/" . $image);
 
                 // Execute an update statement
-                $sql = "UPDATE posts SET title = :title, body = :body, slug = :slug, image = :image WHERE id = :id ";
-                $stmt = $db_connect->Update($sql, ['title' => $title, 'body' => $body, 'slug' => $slug, 'image' => $image, 'id' => $id]);
+                $sql = "UPDATE books SET title = :title, details = :details, image = :image WHERE id = :id ";
+                $stmt = $db_connect->Update($sql, ['title' => $title, 'details' => $details, 'image' => $image, 'id' => $id]);
 
                 // Close statement
                 unset($stmt);
@@ -85,8 +77,8 @@ if(isset($_POST['submit']))
             else
             {
                 // Execute an update statement
-                $sql = "UPDATE posts SET title = :title, body = :body, slug = :slug WHERE id = :id ";
-                $stmt = $db_connect->Update($sql, ['title' => $title, 'body' => $body, 'slug' => $slug, 'id' => $id]);
+                $sql = "UPDATE books SET title = :title, details = :details WHERE id = :id ";
+                $stmt = $db_connect->Update($sql, ['title' => $title, 'details' => $details, 'id' => $id]);
 
                 // Close statement
                 unset($stmt);
@@ -94,18 +86,17 @@ if(isset($_POST['submit']))
         }
         else
         {
-            $user_id = $_SESSION['id'];
             $image = rand(111111111, 999999999) . '_' . $_FILES['image']['name'];
-            move_uploaded_file($_FILES['image']['tmp_name'], "../images/" . $image);
+            move_uploaded_file($_FILES['image']['tmp_name'], "../books/" . $image);
             
             // Execute an insert statement
-            $sql = "INSERT INTO posts (title, body, slug, image, category_id) VALUES (:title, :body, :slug, :image, :category_id)";
-            $stmt = $db_connect->Insert($sql, ['title' => $title, 'body' => $body, 'slug' => $slug, 'image' => $image, 'category_id' => $category]);
+            $sql = "INSERT INTO books (title, image, details) VALUES (:title, :image, :details)";
+            $stmt = $db_connect->Insert($sql, ['title' => $title, 'image' => $image, 'details' => $details]);
 
             // Close statement
             unset($stmt);
         }
-        header("location: posts.php");
+        header("location: books.php");
         die();        
     }
 }
@@ -155,10 +146,10 @@ unset($pdo);
                             <a href="categories.php">Categories</a>
                         </li>
                         <li>
-                            <a href="posts.php" class="active">Posts</a>
+                            <a href="posts.php" >Posts</a>
                         </li>
                         <li>
-                            <a href="books.php">Books</a>
+                            <a href="books.php" class="active">Books</a>
                         </li>
                         <li>
                             <a href="settings.php">Account Settings</a>
@@ -176,56 +167,34 @@ unset($pdo);
                     </nav>
                     <div class="container">
                     <div class="title">
-                        <h5>Add Post</h5>
+                        <h5>Add Book</h5>
                     </div>
-
-                        <div class="col-sm-12 col-md-12 col-lg-12 cat-block">
-                            <div class="form-block">
-                            <form method="post" enctype="multipart/form-data">
-                                <span class="help-block" style="color:red;"><?php echo $msg; ?></span>
-                                <div class="form-group">
-                                    <label for="category" class="form-control-label">Category</label>
-                                    <select class="form-control" name="category_id">
-                                        <option>Select Category</option>
-                                        <?php
-                                            $ask = "SELECT id, name FROM topics ORDER BY name ASC";
-                                            $rows = $db_connect->Read($ask);
-
-                                            foreach ($rows as $row)
-                                            {
-                                        ?>
-                                                <option value="<?php echo $row['id']; ?>"><?php echo $row['name'] ?></option>
-                                        <?php
-                                            }
-                                        ?>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="title" class="form-control-label">Post Title</label>
-                                    <input type="text" name="title" class="form-control" value="<?php echo $title ?>" placeholder="Enter post title" required/>
-                                </div>
-                                <div class="form-group">
-                                    <label for="image" class="form-control-label">Image</label>
-                                    <input type="file" name="image" class="form-control" <?php echo $image_required ?>/>
-                                </div>
-                                <div class="form-group">
-                                    <label for="body" class="form-control-label">Body</label>
-                                    <textarea name="body" row="10" cols="80" class="form-control" placeholder="Enter post body" required><?php echo $body ?></textarea>
-                                </div>
-                                <button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
-                            </form>
+                    <div class="col-sm-12 col-md-12 col-lg-12 cat-block">
+                        <div class="form-block">
+                        <form method="post" enctype="multipart/form-data">
+                            <span class="help-block" style="color:red;"><?php echo $msg; ?></span>
+                            <div class="form-group">
+                                <label for="title" class="form-control-label">Book Title</label>
+                                <input type="text" name="title" class="form-control" value="<?php echo $title ?>" placeholder="Enter book title" required/>
                             </div>
+                            <div class="form-group">
+                                <label for="image" class="form-control-label">Image</label>
+                                <input type="file" name="image" class="form-control" <?php echo $image_required ?>/>
+                            </div>
+                            <div class="form-group">
+                                <label for="details" class="form-control-label">Description</label>
+                                <input type="text" name="details" class="form-control" value="<?php echo $details ?>" placeholder="Enter book description" required/>
+                            </div>
+                            <button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
+                        </form>
                         </div>
                     </div>
+                </div>
                     
 
                 </div>
             </div>
 
-            <script>
-                CKEDITOR.replace('body');
-            </script>
-            
         <script src="jquery-1.12.4.min.js"></script>
         <script src="../js/bootstrap.min.js"></script>
 

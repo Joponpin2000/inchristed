@@ -88,6 +88,9 @@ $result = $db_connect->Read($sql);
                             <a href="posts.php" class="active">Posts</a>
                         </li>
                         <li>
+                            <a href="books.php">Books</a>
+                        </li>
+                        <li>
                             <a href="settings.php">Account Settings</a>
                         </li>
                         <li>

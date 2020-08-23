@@ -20,7 +20,7 @@ if (isset($_GET['type']) && trim($_GET['type']) != '')
         $id = trim($_GET['id']);
         
         // Execute a Delete statement
-        $sql = "DELETE FROM topics WHERE id = :id";
+        $sql = "DELETE FROM books WHERE id = :id";
         $stmt = $db_connect->Remove($sql, ['id' => $id]);
 
         // Close statement
@@ -41,7 +41,7 @@ if (isset($_GET['type']) && trim($_GET['type']) != '')
 
     $start_from = ($page-1) * $limit;
 
-    $sql = "SELECT * FROM topics ORDER BY id DESC LIMIT $start_from, $limit";
+    $sql = "SELECT * FROM books ORDER BY id DESC LIMIT $start_from, $limit";
     $result = $db_connect->Read($sql);
     ?>
 
@@ -79,13 +79,13 @@ if (isset($_GET['type']) && trim($_GET['type']) != '')
                     <a href="./">Dashboard</a>
                 </li>
                 <li>
-                    <a href="categories.php" class="active">Categories</a>
+                    <a href="categories.php">Categories</a>
                 </li>
                 <li>
                     <a href="posts.php">Posts</a>
                 </li>
                 <li>
-                    <a href="books.php">Books</a>
+                    <a href="books.php" class="active">Books</a>
                 </li>
                 <li>
                     <a href="settings.php">Account Settings</a>
@@ -102,15 +102,16 @@ if (isset($_GET['type']) && trim($_GET['type']) != '')
                 </div>
             </nav>
             <div class="title">
-                <h3>Categories</h3>
-                <h5><a href="manage_categories.php" style="text-decoration: underline; color: #7386D5;">Add Category</a></h5>
+                <h3>Books</h3>
+                <h5><a href="manage_books.php" style="text-decoration: underline; color: #7386D5;">Add Book</a></h5>
             </div>
             <div class="table-responsive" style="width: 100%;">
                 <table style="width: 100%" class="table table-bordered table-striped table-hover">
                     <thead>
                         <tr>
-                            <th>Category</th>
+                            <th>Title</th>
                             <th>Description</th>
+                            <th>Image</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -124,16 +125,17 @@ if (isset($_GET['type']) && trim($_GET['type']) != '')
                                     {
                                 ?>
                                         <tr>
-                                            <td><?php echo $row['name'] ?></td>
+                                            <td><?php echo $row['title'] ?></td>
                                             <td  style="word-break: break-all;">
                                                 <?php
-                                                    $sub = substr_replace($row['description'], "...", 30);
+                                                    $sub = substr_replace($row['details'], "...", 30);
                                                      echo $sub; 
                                                 ?>
                                             </td>
+                                            <td><img src="<?php echo "../books/" . $row['image']?>" style="width: 40px; height: 30px"/></td>
                                             <td style="text-align: right;">
                                                 <?php
-                                                echo "<span class='sett edit'><a href='manage_categories.php?id=" . $row['id'] .  "'>Edit</a></span>";
+                                                echo "<span class='sett edit'><a href='manage_books.php?id=" . $row['id'] .  "'>Edit</a></span>";
 
                                                 echo "&nbsp;<span class='sett delete'><a href='?type=delete&id=" . $row['id'] .  "'>Delete</a><span>";
                                                 ?>
@@ -150,7 +152,7 @@ if (isset($_GET['type']) && trim($_GET['type']) != '')
             </div>
             
             <?php
-                $result_db = "SELECT COUNT(id) FROM topics";
+                $result_db = "SELECT COUNT(id) FROM books";
                 $row_db = $db_connect->Read($result_db);
                 $total_records = $row_db[0]['COUNT(id)'];
                 $total_pages = ceil($total_records / $limit);
@@ -158,10 +160,10 @@ if (isset($_GET['type']) && trim($_GET['type']) != '')
                 for ($i = 1; $i <= $total_pages; $i++)
                 {
                     if ($i == $page)
-                    $pagLink .= "<a class='btn view-btn1' style='margin-right:20px;' href='categories.php?page=" . $i . "'>" . $i . "  </a>";
+                    $pagLink .= "<a class='btn view-btn1' style='margin-right:20px;' href='books.php?page=" . $i . "'>" . $i . "  </a>";
                     else
                     {                            
-                        $pagLink .= "<a class='btn btn-primary view-btn1' style='margin-right:20px' href='categories.php?page=" . $i . "'>" . $i . "  </a>";
+                        $pagLink .= "<a class='btn btn-primary view-btn1' style='margin-right:20px' href='books.php?page=" . $i . "'>" . $i . "  </a>";
                     }
                 }
                 echo $pagLink;

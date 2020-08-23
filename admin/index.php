@@ -17,6 +17,10 @@ if(!isset($_SESSION['loggedin']) && ($_SESSION['loggedin'] !== true))
 
     $sql = "SELECT COUNT(*) FROM posts";
     $pos = $db_connect->Read($sql);
+
+    
+    $sql = "SELECT COUNT(*) FROM books";
+    $books = $db_connect->Read($sql);
 ?>
 
 <!DOCTYPE html>
@@ -57,6 +61,9 @@ if(!isset($_SESSION['loggedin']) && ($_SESSION['loggedin'] !== true))
                         </li>
                         <li>
                             <a href="posts.php">Posts</a>
+                        </li>
+                        <li>
+                            <a href="books.php">Books</a>
                         </li>
                         <li>
                             <a href="settings.php">Account Settings</a>
@@ -110,6 +117,24 @@ if(!isset($_SESSION['loggedin']) && ($_SESSION['loggedin'] !== true))
                                         <div class="col-sm-8 col-md-8 col-lg-8">
                                             <h3>Posts</h3>
                                             <p>Manage Posts</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-6 col-md-3 col-lg-3 card" style="height: auto">
+                                <a href="books.php">
+                                    <div class="row">
+                                        <div class="col-sm-4 col-md-4 col-lg-4" style="background-color: #7386D5; height: 100px;">
+                                            <i class="fa-book" style="color: white;"></i>
+                                            <h2 style="color: white">
+                                                <?php
+                                                    echo($books[0]['COUNT(*)']);
+                                                ?>
+                                            </h2>
+                                        </div>
+                                        <div class="col-sm-8 col-md-8 col-lg-8">
+                                            <h3>Books</h3>
+                                            <p>Manage Books</p>
                                         </div>
                                     </div>
                                 </a>
