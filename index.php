@@ -4,6 +4,23 @@ require_once("functions/DatabaseClass.php");
 
 $database = new DatabaseClass();
 
+$limit = 6;
+
+if (isset($_GET['page']))
+{
+  $page = trim($_GET['page']);
+}
+else
+{
+  $page = 1;
+}
+$start_from = ($page-1) * $limit;
+$statement = "SELECT c.name as category_name, p.id, p.title, p.slug, p.body, p.image, p.category_id, p.created_at
+                FROM posts p LEFT JOIN topics c ON p.category_id = c.id
+                ORDER BY p.created_at DESC LIMIT $start_from, $limit";
+
+$posts = $database->Read($statement);
+
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +93,10 @@ $database = new DatabaseClass();
     </div>
       <!--<div class="banner">
       </div>-->
-
+  <?php
+  if ($posts)
+  {
+  ?>
     <div class="site-section">
       <div class="container">
         <div>
@@ -87,22 +107,6 @@ $database = new DatabaseClass();
           </div>
           <div class="row">
             <?php
-              $limit = 6;
-
-              if (isset($_GET['page']))
-              {
-                $page = trim($_GET['page']);
-              }
-              else
-              {
-                $page = 1;
-              }
-              $start_from = ($page-1) * $limit;
-              $statement = "SELECT c.name as category_name, p.id, p.title, p.slug, p.body, p.image, p.category_id, p.created_at
-                              FROM posts p LEFT JOIN topics c ON p.category_id = c.id
-                              ORDER BY p.created_at DESC LIMIT $start_from, $limit";
-
-              $posts = $database->Read($statement);
 
               foreach ($posts as $post)
               {
@@ -181,6 +185,21 @@ $database = new DatabaseClass();
         </div>
       </div>
     </div>
+  <?php
+  }
+  else
+  {
+  ?>
+  <div class="container">
+    <div class="row my-5">
+      <div class="col-12">
+        <h2>No Posts yet!</h2>
+      </div>
+    </div>
+  </div>
+  <?php
+  }
+  ?>
 
     <!--
     <div class="site-section bg-lightx">

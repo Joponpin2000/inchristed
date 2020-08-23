@@ -102,7 +102,7 @@ if (isset($_GET['type']) && trim($_GET['type']) != '')
                 <h3>Categories</h3>
                 <h5><a href="manage_categories.php" style="text-decoration: underline; color: #7386D5;">Add Category</a></h5>
             </div>
-            <div class="table" style="width: 100%;">
+            <div class="table-responsive" style="width: 100%;">
                 <table style="width: 100%" class="table table-bordered table-striped table-hover">
                     <thead>
                         <tr>

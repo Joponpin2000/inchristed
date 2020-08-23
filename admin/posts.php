@@ -105,7 +105,7 @@ $result = $db_connect->Read($sql);
                         <h3>Posts</h3>
                         <h5><a href="manage_posts.php" style="text-decoration: underline; color: #7386D5;">Add Post</a></h5>
                     </div>
-                    <div class="table" style="width: 100%;">
+                    <div class="table-responsive" style="width: 100%;">
                         <table style="width: 100%" class="table table-bordered table-striped table-hover">
                             <thead>
                                 <tr>

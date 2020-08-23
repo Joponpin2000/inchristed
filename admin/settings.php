@@ -76,7 +76,7 @@ $result = $db_connect->Read($sql, ['id' => $_SESSION['id']]);
                 if ($result)
                 {
             ?>
-                    <div class="table" style="width: 100%;">
+                    <div class="table-responsive" style="width: 100%;">
                         <table style="width: 100%">
                                 <tr>
                                     <th>Name</th>
