@@ -237,6 +237,7 @@ $posts = $database->Read($statement);
   <script src="js/bootstrap-datepicker.min.js"></script>
   <script src="js/aos.js"></script>
 
+  <script src="js/n-p.js"></script>
   <script src="js/main.js"></script>
   </body>
 </html>
