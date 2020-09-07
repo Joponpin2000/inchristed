@@ -55,6 +55,22 @@ if(isset($_POST['submit']))
     $body = trim($_POST['body']);
     $category = trim($_POST['category_id']);
 
+    if ($title == '')
+    {
+        $msg = "Please enter post title";
+    }
+
+    if ($category == '')
+    {
+        $msg = "Please choose category";
+    }
+
+    if ($body == '')
+    {
+        $msg = "Please enter post body";
+    }
+
+
     if ($_FILES['image']['type'] != '' && $_FILES['image']['type'] != 'image/png' && $_FILES['image']['type'] != 'image/jpg' && $_FILES['image']['type'] != 'image/jpeg')
     {
         $msg = "Please select only png, jpg and jpeg formats.";
@@ -186,7 +202,7 @@ unset($pdo);
                                 <div class="form-group">
                                     <label for="category" class="form-control-label">Category</label>
                                     <select class="form-control" name="category_id">
-                                        <option>Select Category</option>
+                                        <option value="">Select Category</option>
                                         <?php
                                             $ask = "SELECT id, name FROM topics ORDER BY name ASC";
                                             $rows = $db_connect->Read($ask);

@@ -188,20 +188,28 @@ $posts = $database->Read($statement);
     </div>
   <?php
   }
-  else
-  {
   ?>
-  <div class="container">
-    <div class="row my-5">
-      <div class="col-12">
-        <h2>No Posts yet!</h2>
+  <div id="author">
+    <div class="container">
+      <div class="row mb-5 justify-content-center">
+        <div class="text-center">
+          <h2> Author</h2>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4 mb-5 text-center">
+          <img src="images/portrait.JPG" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
+        </div>
+        <div class="col-md-6 col-lg-6 mb-5 text-center">
+          <h2 class="mb-3 h4">Felix Alalade</h2>
+          <p style="text-align: left; font-family:Arial, Helvetica, sans-serif">I am a kingdom scribe; a privileged heir of the kingdom, like you are. I just might not look like you except that we all look the same in Christ.<br/>
+                    If you are worn out on religion and really want something definitive and disruptive, then let's be friends.
+          </p>
+          <p><a href="about.php#author" class="btn btn-primary btn-sm rounded px-4 py-2">Read my bio</a></p>
+        </div>
       </div>
     </div>
   </div>
-  <?php
-  }
-  ?>
-
     <!--
     <div class="site-section bg-lightx">
       <div class="container">

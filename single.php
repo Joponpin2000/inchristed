@@ -9,7 +9,7 @@ $name_err = $email_err = $message_err = "";
 if(isset($_GET['title']))
 {
   $slug = trim($_GET['title']);
-  $database = new DatabaseClass("localhost", "blog", "root", "");
+  $database = new DatabaseClass();
 
   $sql = "SELECT c.name as category_name, c.slug as category_slug, p.id, p.title, p.slug, p.body, p.image, p.category_id, p.created_at
   FROM posts p LEFT JOIN topics c ON p.category_id = c.id

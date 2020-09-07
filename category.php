@@ -4,7 +4,7 @@ require_once("functions/DatabaseClass.php");
 if(isset($_GET['title']))
 {
   $slug = trim($_GET['title']);
-  $database = new DatabaseClass("localhost", "blog", "root", "");
+  $database = new DatabaseClass();
 
   $sql = "SELECT * FROM topics WHERE slug = :slug";
   $blog = $database->Read($sql, ["slug" => $slug]);

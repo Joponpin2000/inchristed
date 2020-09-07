@@ -125,6 +125,7 @@ $books = $database->Read($statement);
     else
     {
   ?>
+  
       <div class="text-center">
         <h2 class="my-5">No Books Yet</h2>
         <h5 class="my-5" style="color: red;">Watch out!!!</h5>
